@@ -1,12 +1,15 @@
 export const signInService = async (user) => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_AUTH_BASE_URL}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_AUTH_BASE_URL}/auth/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    );
 
     if (!response.ok) {
       const errorMessage = await response.text();
