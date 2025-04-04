@@ -10,7 +10,7 @@ export const getAllWorkSpace = async () => {
   );
 
   const workspaces = await response.json();
-  // console.log("WOrkspace list  : ", workspaces);
+  console.log("Workspace list  : ", workspaces);
 
   return workspaces;
 };

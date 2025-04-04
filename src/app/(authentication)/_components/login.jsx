@@ -67,7 +67,6 @@ export default function LoginComponent() {
           </Link>
         </div>
       </div>
-
       {/* sign in with google */}
       <div className=" bg-ghost-white rounded-lg text-center">
         <Button className="flex gap-2 items-start justify-center w-full bg-ghost-white text-charcoal shadow-none hover:bg-ghost-white/50">

@@ -1,21 +1,3 @@
-// import { getAllWorkSpace } from '@/services/workSpaceService'
-// import React from 'react'
-
-// export default async function WorkSpaceComponennt() {
-
-//     const workSpaceList = await getAllWorkSpace();
-
-//   return (
-//     <div >
-
-//     </div>
-//   )
-// }
-
-// src/components/BookComponent.jsx
-
-// import { getAllBooks } from "@/services/bookService";
-
 import { getAllWorkSpace } from "@/services/workSpaceService";
 import React from "react";
 

@@ -19,11 +19,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           if (!user) {
             throw new Error("Invalid credentials");
           }
-          console.log("user: ", user);
+          // console.log("user: ", user);
 
           return user;
         } catch (error) {
-          console.error("Authorize error:", error);
+          // console.error("Authorize error:", error);
           return null;
         }
       },
