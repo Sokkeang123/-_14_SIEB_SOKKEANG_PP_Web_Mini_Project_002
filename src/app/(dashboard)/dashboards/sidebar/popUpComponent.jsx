@@ -1,71 +1,67 @@
-// PopUpComponent.jsx
 "use client";
-
 import React, { useState } from "react";
-
-export default function PopUpComponent({ onClose, onSubmit }) {
+import { Input } from "@/components/ui/input";
+import { PlusCircle } from "lucide-react";
+import { createWorkspaceAction } from "@/action/createWorkSpaceService";
+const WorkspaceForm = ({ onWorkspaceCreated }) => {
   const [workspaceName, setWorkspaceName] = useState("");
-
-  const handleInputChange = (event) => {
-    setWorkspaceName(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    if (workspaceName.trim()) {
-      onSubmit(workspaceName);
-      onClose();
-    } else {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!workspaceName.trim()) {
       alert("Please enter a workspace name.");
+      return;
+    }
+    try {
+      const response = await createWorkspaceAction({ workspaceName });
+      setWorkspaceName("");
+      setIsOpen(false);
+      if (onWorkspaceCreated) {
+        onWorkspaceCreated();
+      }
+    } catch (error) {
+      console.error("Error creating workspace:", error);
     }
   };
-
   return (
-    <div className="fixed z-10 inset-0 overflow-y-auto">
-      <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-        <div className="fixed inset-0 transition-opacity" onClick={onClose}>
-          <div className="absolute inset-0 bg-gray-500 opacity-75" />
-        </div>
-        <span className="hidden sm:inline-block sm:align-middle sm:h-screen" />
-        <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
-          <div>
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
-              Create New Workspace
-            </h3>
-            <div className="mt-2">
-              <label
-                htmlFor="workspaceName"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Workspace Name:
-              </label>
-              <input
-                type="text"
+    <div>
+      <button onClick={() => setIsOpen(true)}>
+        <PlusCircle size={20} className="mr-2" />
+      </button>
+      {isOpen && (
+        <div className="fixed inset-0 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <h2 className="text-xl font-semibold">Create New Workspace</h2>
+
+              <Input
                 id="workspaceName"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Enter workspace name"
+                type="text"
+                placeholder="Please Enter Workspace Name"
                 value={workspaceName}
-                onChange={handleInputChange}
+                onChange={(e) => setWorkspaceName(e.target.value)}
+                className="w-full p-2 border rounded-md"
               />
-            </div>
-          </div>
-          <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-            <button
-              type="button"
-              className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-blue-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
-            <button
-              type="button"
-              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5 sm:mt-0 sm:ml-3"
-              onClick={onClose}
-            >
-              Cancel
-            </button>
+              <div className="flex justify-end cursor-pointer gap-4">
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="px-4 py-2 text-amber-50 bg-red-700 border rounded-md "
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md "
+                >
+                  Ok
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
-}
+};
+export default WorkspaceForm;

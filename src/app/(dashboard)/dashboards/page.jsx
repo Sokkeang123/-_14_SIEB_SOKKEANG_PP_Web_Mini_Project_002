@@ -2,9 +2,6 @@ import React from "react";
 import SidebarComponent from "./sidebar/SidebarComponent";
 import AccountDashboard from "./main-content/AccountDashboard";
 import ContentDashboard from "./main-content/ContentDashboard";
-import CardComponent from "@/components/card";
-import FooterComponent from "./main-content/FooterComponent";
-import WorkSpaceComponent from "@/components/WorkSpaceComponennt";
 
 export default function DashboardPage() {
   return (
@@ -13,11 +10,11 @@ export default function DashboardPage() {
         <aside className="col-span-3">
           {/* <SidebarComponent/> */}
           <SidebarComponent />
-          <div className="py-3 text-2xl mt-18 uppercase text-center tracking-widest mb-8">
+          {/* <div className="py-3 text-2xl mt-18 uppercase text-center tracking-widest mb-8">
             <h1 className="font-bold text-3xl text-center">
               Plan<span className="text-watermelon-red">I</span>t
             </h1>
-          </div>
+          </div> */}
 
           {/* <WorkSpaceComponent/> */}
         </aside>

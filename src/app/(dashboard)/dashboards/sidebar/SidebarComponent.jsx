@@ -1,6 +1,7 @@
 import { getAllWorkSpace } from "@/services/workSpaceService";
 import { Link } from "lucide-react";
 import React from "react";
+import WorkspaceForm from "./popUpComponent";
 
 export default async function SidebarComponent() {
   const { payload: workspace } = await getAllWorkSpace();
@@ -18,23 +19,8 @@ export default async function SidebarComponent() {
         <div className="ms-4 text-2xl font-bold text-blue-600">
           <h1>Workspace</h1>
         </div>
-        <div className="ms-16">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="blue"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-square-plus-icon lucide-square-plus"
-          >
-            <rect width="18" height="18" x="3" y="3" rx="2" />
-            <path d="M8 12h8" />
-            <path d="M12 8v8" />
-          </svg>
+        <div className="ms-16 cursor-pointer">
+          <WorkspaceForm />
         </div>
       </div>
       <br />
@@ -77,18 +63,56 @@ export default async function SidebarComponent() {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="blue"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-square-plus-icon lucide-square-plus"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-star-icon lucide-star"
           >
-            <rect width="18" height="18" x="3" y="3" rx="2" />
-            <path d="M8 12h8" />
-            <path d="M12 8v8" />
+            <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
           </svg>
         </div>
       </div>
+      <ul>
+        <li className="flex items-center justify-between px-4 pt-4 py-2 hover:bg-blue-200 hover:rounded-2xl  uppercase text-1xl tracking-wider text-gray-500 font-bold">
+          <span>Mobile</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-ellipsis-icon lucide-ellipsis"
+          >
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="19" cy="12" r="1" />
+            <circle cx="5" cy="12" r="1" />
+          </svg>
+        </li>
+        <li className="flex items-center justify-between px-4 pt-4 py-2 hover:bg-blue-200 hover:rounded-2xl  uppercase text-1xl tracking-wider text-gray-500 font-bold">
+          <span>PHP</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-ellipsis-icon lucide-ellipsis"
+          >
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="19" cy="12" r="1" />
+            <circle cx="5" cy="12" r="1" />
+          </svg>
+        </li>
+      </ul>
     </aside>
   );
 }

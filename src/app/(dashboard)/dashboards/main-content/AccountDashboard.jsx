@@ -42,8 +42,8 @@ export default function AccountDashboard() {
             />
           </div>
           <div>
-            <h1 className="text-sm font-bold text-gray-800">Monster</h1>
-            <p className="text-xs text-blue-600">blackmonster@gmail.com</p>
+            <h1 className="text-sm font-bold text-gray-800">KEANG</h1>
+            <p className="text-xs text-blue-600">keang@gmail.com</p>
           </div>
         </div>
       </div>
